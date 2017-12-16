@@ -139,9 +139,9 @@ function addRow(coin_data, amount) {
   var rate_id = coin_data.symbol.toLowerCase() + "_rate";
   var parameter_name = coin_data.symbol.toLowerCase() + "_amount";
   var currency = document.getElementById('currency').value.toUpperCase();
-  var row = '<div class="col-name">' + coin_data.name + '<br>(1 ' + coin_data.symbol + ' = <span id="' + rate_id + '">0</span> <span class="currency">' + currency + '</span>)</div>';
-  row += '<div class="col-amount"><input type="text" id="' + parameter_name + '" name="' + parameter_name + '" value="' + amount + '" size="10"></div>';
-  row += '<div class="col-result"><span id="' + result_id + '" class="item-result">0</span> <span class="currency">' + currency + '</span></div>';
+  var row = '<div class="col col-name">' + coin_data.name + '<br>(1 ' + coin_data.symbol + ' = <span id="' + rate_id + '">0</span> <span class="currency">' + currency + '</span>)</div>';
+  row += '<div class="col col-amount"><input type="text" id="' + parameter_name + '" name="' + parameter_name + '" value="' + amount + '" size="10"></div>';
+  row += '<div class="col col-result"><div><span id="' + result_id + '" class="item-result">0</span> <span class="currency">' + currency + '</span></div></div>';
   var div = document.createElement('div');
   div.innerHTML = row;
   div.classList.add('item_row');
