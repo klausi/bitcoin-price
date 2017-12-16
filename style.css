@@ -2,6 +2,10 @@ html {
     font-size: 1.4em;
 }
 
+div {
+    padding-top: 10px;
+}
+
 .total {
     font-size: 200%;
     padding-top: 25px;
@@ -16,12 +20,7 @@ footer {
     font-size: smaller;
 }
 
-select, input {
-    font-size: 1em;
-}
-
 .item_row {
-    padding-top: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
