@@ -44,8 +44,13 @@ getJSON('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=15',
       var currency = getParameterByName('currency');
       if (currency !== null) {
         currency = currency.toLowerCase();
-        if (currency == 'eur' || currency == 'usd') {
-          document.getElementById("currency").value = currency;
+        if (currency == 'eur') {
+          document.getElementById("currency-eur").checked = 1;
+          document.getElementById("currency-usd").checked = 0;
+        }
+        if (currency == 'usd') {
+          document.getElementById("currency-eur").checked = 0;
+          document.getElementById("currency-usd").checked = 1;
         }
       }
 
@@ -85,18 +90,20 @@ else {
   form.addEventListener("submit", processForm);
 }
 // Register event listener to trigger whenever the currency is changed.
-var currency_select = document.getElementById("currency");
-if (currency_select.attachEvent) {
-  currency_select.attachEvent("change", calculate);
-}
-else {
-  currency_select.addEventListener("change", calculate);
+var currency_options = document.getElementsByName("currency");
+for (var i = 0, length = currency_options.length; i < length; i++) {
+  if (currency_options[i].attachEvent) {
+    currency_options[i].attachEvent("change", calculate);
+  }
+  else {
+    currency_options[i].addEventListener("change", calculate);
+  }
 }
 
 // Calculate current price from amounts.
 function calculate() {
   var total = 0;
-  var currency = document.getElementById('currency').value;
+  var currency = document.querySelector('input[name="currency"]:checked').value;
 
   for (var i = 0, len = json.length; i < len; i++) {
     var rate_id = json[i].symbol.toLowerCase() + "_rate";
@@ -138,7 +145,7 @@ function addRow(coin_data, amount) {
   var result_id = coin_data.symbol.toLowerCase() + "_result";
   var rate_id = coin_data.symbol.toLowerCase() + "_rate";
   var parameter_name = coin_data.symbol.toLowerCase() + "_amount";
-  var currency = document.getElementById('currency').value.toUpperCase();
+  var currency = document.querySelector('input[name="currency"]:checked').value.toUpperCase();
   var row = '<div class="col col-name">' + coin_data.name + '<br>(1 ' + coin_data.symbol + ' = <span id="' + rate_id + '">0</span> <span class="currency">' + currency + '</span>)</div>';
   row += '<div class="col col-amount"><input type="text" id="' + parameter_name + '" name="' + parameter_name + '" value="' + amount + '" size="10"></div>';
   row += '<div class="col col-result"><div><span id="' + result_id + '" class="item-result">0</span> <span class="currency">' + currency + '</span></div></div>';

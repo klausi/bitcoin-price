@@ -14,10 +14,13 @@
         <div class="header">
             <img alt="Bitcoin calculator logo" src="bitcoin-calculator.svg" height="64" width="64">
             <div id="currency-select">
-                <select id="currency">
-                    <option value="eur">EUR</option>
-                    <option value="usd">USD</option>
-                </select>
+                <div>
+                    <input type="radio" id="currency-eur" name="currency" value="eur" checked="1">
+                    <label for="currency-eur">EUR</label>
+
+                    <input type="radio" id="currency-usd" name="currency" value="usd">
+                    <label for="currency-usd">USD</label>
+                </div>
             </div>
         </div>
         <div class="add col">
