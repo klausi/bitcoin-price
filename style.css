@@ -2,6 +2,19 @@ html {
     font-size: 1.4em;
 }
 
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#currency-select {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .col {
     padding-top: 10px;
 }
