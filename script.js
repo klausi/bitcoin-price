@@ -20,6 +20,11 @@ getJSON('https://api.coinmarketcap.com/v1/ticker/?convert=EUR&limit=15',
     if (err !== null) {
       alert('Something went wrong: ' + err);
     } else {
+      // Hide "Loading..." div.
+      document.getElementById("loader").style["display"] = "none";
+      // Show calculator form.
+      document.getElementById("calculator").removeAttribute("style");
+
       json = data;
       // Add available crypto currencies to the select box for adding.
       select = document.getElementById('add_coin');
